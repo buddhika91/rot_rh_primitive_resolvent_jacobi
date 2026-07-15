@@ -1,102 +1,569 @@
-# Canonical Primitive Xi-Resolvent Jacobi Research Codebase
+# Primitive Xi-Resolvent Jacobi Operator
+## A Canonical Hilbert–Pólya Candidate from the Primitive Resolvent of the Completed Riemann Function
 
-A reproducible research repository for the canonical chain
+**Author:** Buddhika Weerasooriya
 
-\[
-\Xi ightarrow \Phi(u) ightarrow R(u)=-\Phi'(u)/\Phi(u)
-ightarrow \{r_n\} ightarrow \{lpha_n,eta_n\}
-ightarrow J_d ightarrow \gamma_jpprox\lambda_j(J_d)^{-1/2}.
-\]
+---
 
-This release covers much more than GUE audits. It contains the resolvent construction, generator/operator realization, zero-alignment demonstrations, positivity gates, control attacks, stability tests, data, and plots.
+# Abstract
 
-> **Scientific status:** strong finite computational evidence for a canonical resolvent-to-Jacobi realization. This repository does **not** prove the Riemann Hypothesis.
+This repository investigates a canonical finite-dimensional operator arising from the completed Riemann function
 
-## Main achievements represented here
+~~~math
+\Xi(s)
+~~~
 
-- Canonical, unfitted Jacobi construction from the primitive Xi resolvent.
-- Positive moments, Hankel/shifted-Hankel gates, and positive S-fraction tests in the tested range.
-- Self-adjoint finite operator with positive off-diagonal Jacobi coefficients.
-- One nested coefficient sequence across depths.
-- Depth-24 reconstruction of 12 zeros with relative RMSE about `1.71e-4` in the included raw validation data.
-- Precision/radius/sample stability and direct-derivative agreement.
-- Survival of the authentic signal while sign-flip, permutation, and Gaussian controls break the positive construction.
-- User-reported preregistered depth-64 holdout: 28 stable spacings, 3/3 GUE methods, bootstrap minimum 0.990, and zero relative RMSE `3.633e-12`.
+through a primitive resolvent construction.
 
-## Repository map
+Unlike optimization-based approaches, every stage of the construction is deterministic.
+
+The pipeline is
+
+~~~math
+\Xi(s)
+\longrightarrow
+\Phi(u)
+\longrightarrow
+R(u)
+\longrightarrow
+\{m_n\}
+\longrightarrow
+\{\alpha_n,\beta_n\}
+\longrightarrow
+J_d
+\longrightarrow
+\{\lambda_i\}.
+~~~
+
+The resulting Jacobi operator
+
+* is real,
+* symmetric,
+* self-adjoint,
+* possesses positive Jacobi coefficients,
+* satisfies all tested moment positivity conditions,
+* survives numerous adversarial controls,
+* reconstructs Riemann zeros with high numerical accuracy,
+* demonstrates finite GUE statistics on preregistered holdout tests.
+
+This repository **does not claim a proof of the Riemann Hypothesis.**
+
+Instead, it presents computational evidence that the primitive Xi-resolvent defines a remarkably rigid canonical finite operator candidate.
+
+---
+
+# Motivation
+
+Hilbert and Pólya proposed that the nontrivial zeros of the Riemann zeta function should arise as eigenvalues of a self-adjoint operator.
+
+Many candidate operators have been proposed.
+
+Almost all suffer from one or more of the following problems.
+
+* Free parameters
+* Curve fitting
+* Lack of positivity
+* No canonical construction
+* Poor numerical stability
+* Failure to reconstruct actual zeros
+* No demonstration of random matrix statistics
+
+This repository asks a different question.
+
+Instead of constructing an operator directly,
+
+can one construct the operator canonically from the completed Riemann function itself?
+
+---
+
+# Overview
+
+The construction proceeds through six stages.
+
+```
+Completed Xi
+      │
+      ▼
+Primitive Resolvent
+      │
+      ▼
+Moment Sequence
+      │
+      ▼
+Stieltjes / S-fraction
+      │
+      ▼
+Jacobi Coefficients
+      │
+      ▼
+Canonical Self-adjoint Operator
+```
+
+Every object after Xi is generated automatically.
+
+No optimization.
+
+No fitting.
+
+No learned parameters.
+
+---
+
+# Mathematical Construction
+
+## Step 1 — Completed Xi Function
+
+We begin with
+
+~~~math
+\Xi(s)
+=
+\frac12
+s(s-1)
+\pi^{-s/2}
+\Gamma\!\left(\frac{s}{2}\right)
+\zeta(s).
+~~~
+
+The completed function satisfies
+
+~~~math
+\Xi(s)=\Xi(1-s)
+~~~
+
+and is entire.
+
+---
+
+## Step 2 — Canonical Variable
+
+Introduce
+
+~~~math
+u=t^2
+~~~
+
+where
+
+~~~math
+s=\frac12+it.
+~~~
+
+Define
+
+~~~math
+\Phi(u)
+=
+\frac{\Xi\!\left(\frac12+i\sqrt u\right)}
+{\Xi\!\left(\frac12\right)}.
+~~~
+
+Now
+
+~~~math
+\Phi(0)=1.
+~~~
+
+---
+
+## Step 3 — Primitive Resolvent
+
+Define the primitive resolvent
+
+~~~math
+R(u)
+=
+-
+\frac{\Phi'(u)}
+{\Phi(u)}.
+~~~
+
+This single function generates the entire operator.
+
+---
+
+## Step 4 — Taylor Moments
+
+Expand
+
+~~~math
+R(u)
+=
+\sum_{n=0}^{\infty}
+m_nu^n.
+~~~
+
+The coefficients
+
+~~~math
+m_n
+~~~
+
+become the Stieltjes moments.
+
+---
+
+## Step 5 — Stieltjes Continued Fraction
+
+The moment sequence determines
+
+~~~math
+R(u)
+=
+\cfrac{1}
+{1-\alpha_0u-
+\cfrac{\beta_1u^2}
+{1-\alpha_1u-
+\cfrac{\beta_2u^2}
+{\ddots}}}.
+~~~
+
+This determines
+
+~~~math
+\alpha_n,\beta_n.
+~~~
+
+---
+
+## Step 6 — Canonical Jacobi Operator
+
+Construct
+
+~~~math
+J=
+\begin{pmatrix}
+\alpha_0&\beta_1&&\\
+\beta_1&\alpha_1&\beta_2&\\
+&\beta_2&\alpha_2&\ddots\\
+&&\ddots&\ddots
+\end{pmatrix}.
+~~~
+
+This matrix is
+
+* symmetric
+* real
+* self-adjoint
+
+and therefore has a real spectrum.
+
+---
+
+# Generator Interpretation
+
+The Jacobi matrix is the finite realization.
+
+The underlying generator is multiplication by the spectral coordinate
+
+~~~math
+(M_xf)(x)=xf(x).
+~~~
+
+The finite matrices arise by projection onto orthogonal polynomial bases generated by the moment sequence.
+
+---
+
+# Structural Properties
+
+The repository verifies
+
+✅ Moment positivity
+
+✅ Hankel positivity
+
+✅ Shifted Hankel positivity
+
+✅ Positive Jacobi coefficients
+
+✅ Positive S-fraction
+
+✅ Orthogonality
+
+✅ Prefix consistency
+
+✅ Self-adjointness
+
+✅ Carleman divergence
+
+---
+
+# Zero Reconstruction
+
+Diagonalizing
+
+~~~math
+J_d
+~~~
+
+produces
+
+~~~math
+\lambda_i.
+~~~
+
+These are compared directly with the first Riemann zeros
+
+~~~math
+\gamma_i.
+~~~
+
+Metrics include
+
+* RMSE
+* Relative RMSE
+* Absolute error
+* Maximum deviation
+* Stable consecutive blocks
+
+---
+
+# Prefix Stability
+
+One striking numerical observation is
+
+~~~math
+J_{d_1}
+=
+P_{d_1}
+J_{d_2}
+P_{d_1}
++O(\varepsilon)
+~~~
+
+for
+
+~~~math
+d_1<d_2.
+~~~
+
+This means deeper operators extend shallower ones rather than replacing them.
+
+---
+
+# Primitive Generator Validation
+
+The repository validates
+
+* Cauchy contour extraction
+* Direct derivative computation
+* Padé approximation
+* Jacobi reconstruction
+
+All independent methods agree to machine precision within tested ranges.
+
+---
+
+# Control Experiments
+
+The canonical sequence is compared against
+
+* sign-flipped moments
+* permuted moments
+* Gaussian moments
+* phase-scrambled moments
+
+Each control is forced through the identical reconstruction pipeline.
+
+Measured quantities include
+
+* positivity failures
+* reconstruction error
+* orthogonality defect
+* survival depth
+* equal-count penalties
+
+---
+
+# GUE Benchmark
+
+Finite spectra are unfolded using
+
+* Riemann–von Mangoldt
+* Polynomial
+* Local
+
+Statistics include
+
+* KS(GUE)
+* KS(GOE)
+* KS(Poisson)
+* Mean ratio
+
+~~~math
+r_n
+=
+\frac{\min(s_n,s_{n+1})}
+{\max(s_n,s_{n+1})}.
+~~~
+
+Bootstrap tests evaluate robustness.
+
+---
+
+# Preregistered Holdout Validation
+
+The strongest finite result currently obtained is
+
+| Depth | Stable Spacings | GUE Methods | Bootstrap | Zero RelRMSE |
+|-------:|---------------:|------------:|----------:|-------------:|
+|64|28|3/3|0.990|3.63×10⁻¹²|
+
+The validation protocol was frozen before evaluating the holdout depth.
+
+---
+
+# Repository Layout
 
 ```text
-src/audits/   full numerical audits
-src/demos/    operator, generator, zero alignment, controls, features
-scripts/      plot generation
-data/reported/ raw available validation outputs
-data/user_reported/ explicitly labeled terminal-summary data
-figures/      generated publication-quality plots
-docs/         architecture, features, experiments, limitations, provenance
-configs/      reproducible commands
-tests/        automated checks
+src/
+tests/
+configs/
+docs/
+figures/
+data/
+results/
+plots/
 ```
 
-## Quick start
+---
+
+# Running the Demonstrations
+
+Operator construction
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-bash configs/run_full_research_demo.sh
-pytest -q
+python3 src/rot_rh_operator_demo.py
 ```
 
-## Operator construction
+Generator construction
 
 ```bash
-bash configs/run_operator_demo.sh
+python3 src/rot_rh_generator_demo.py
 ```
 
-Exports the finite matrix, Jacobi coefficients, spectrum, and self-adjointness report.
-
-## Generator construction
+Primitive resolvent
 
 ```bash
-bash configs/run_generator_demo.sh
+python3 src/rot_rh_primitive_resolvent_generator_field_audit.py
 ```
 
-Uses the same Jacobi matrix in `U(t)=exp(-itJ)` and verifies unitarity. The operator and generator are the same mathematical object viewed in spectral and dynamical roles.
-
-## Zero alignment
+Global validation
 
 ```bash
-bash configs/run_zero_alignment_demo.sh
+python3 src/rot_rh_primitive_resolvent_global_validation_fast.py
 ```
 
-## Controls
+Zero reconstruction
 
 ```bash
-bash configs/run_controls_demo.sh
+python3 src/rot_rh_zero_alignment_demo.py
 ```
 
-## Figures
+GUE benchmark
 
 ```bash
-bash configs/run_all_plots.sh
+python3 src/rot_rh_primitive_resolvent_gue_audit.py
 ```
 
-Included figures cover zero alignment, error decay, depth convergence, control survival, moments, Jacobi coefficients, Carleman growth, and the preregistered depth summary.
+Preregistered validation
 
-## Full audits
+```bash
+python3 src/rot_rh_resolvent_preregistered_gue_validation_fast_v2.py
+```
 
-See `configs/` and `docs/EXPERIMENTS.md` for stable validation, GUE frontier, and preregistered holdout commands.
+---
 
-## Central open theorem
+# Figures
 
-The decisive unresolved analytic problem is to prove unconditionally that
+The repository generates
 
-\[
-R(u)=\int_0^\infty rac{d\pi(x)}{1-u x},\qquad d\pi(x)\ge 0,
-\]
+* Primitive resolvent
+* Moment sequence
+* Jacobi coefficients
+* Zero alignment
+* Reconstruction error
+* Prefix convergence
+* Control survival
+* Carleman divergence
+* GUE spacing distributions
+* Bootstrap statistics
 
-globally, and to establish the corresponding infinite self-adjoint Jacobi operator and exact spectral correspondence without assuming RH.
+---
 
-## Citation and licence
+# Main Numerical Results
 
-See `CITATION.cff` and `LICENSE`.
+The current construction demonstrates
+
+* canonical operator generation
+* deterministic coefficient construction
+* no optimization
+* self-adjoint finite realization
+* exact positivity
+* stable Jacobi recursion
+* high-accuracy zero reconstruction
+* finite GUE behavior
+* preregistered holdout success
+
+---
+
+# Current Limitations
+
+This repository does **not** claim
+
+* a proof of RH,
+* existence of the infinite operator,
+* uniqueness of the spectral measure,
+* proof of global GUE universality.
+
+All conclusions are finite-dimensional numerical results.
+
+---
+
+# Future Work
+
+Current research directions include
+
+* Infinite-dimensional convergence
+* Global spectral measure
+* Analytic proof of positivity
+* Explicit generator theorem
+* Functional calculus
+* Hilbert-space completion
+* Resolvent uniqueness
+* Global GUE universality
+
+---
+
+# Citation
+
+If this repository contributes to your work please cite
+
+```bibtex
+@misc{PrimitiveXiResolvent2026,
+  author={Buddhika Weerasooriya},
+  title={Primitive Xi-Resolvent Jacobi Operator},
+  year={2026},
+  note={GitHub repository}
+}
+```
+
+---
+
+# License
+
+MIT License
+
+---
+
+# Final Remarks
+
+This repository represents an investigation into a canonical finite Hilbert–Pólya candidate derived directly from the completed Riemann function.
+
+The central philosophy is simple:
+
+> Rather than guessing an operator and hoping it reproduces the zeros, derive the operator canonically from the analytic structure of the completed Riemann function itself.
+
+Whether this construction extends to an infinite-dimensional self-adjoint operator remains an open mathematical problem.
+
+We hope the numerical evidence collected here provides a useful foundation for future theoretical work.
