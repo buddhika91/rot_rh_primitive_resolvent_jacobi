@@ -1,0 +1,3 @@
+depth,positive_real_poles,positive_jacobi_nodes,compared,max_relative_node_pole_error,status
+12,12,0,0,nan,WARN
+16,16,16,16,103741258.26622026,WARN

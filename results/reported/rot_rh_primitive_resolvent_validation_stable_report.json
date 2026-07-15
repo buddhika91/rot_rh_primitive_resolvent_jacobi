@@ -1,0 +1,86 @@
+{
+  "scientific_status": "finite numerical validation of the primitive-resolvent/Stieltjes-Jacobi construction; not an RH proof",
+  "args": {
+    "dps_list": [
+      140,
+      180
+    ],
+    "radius_list": [
+      3.0,
+      4.0
+    ],
+    "samples_list": [
+      2048
+    ],
+    "reference_dps": 180,
+    "reference_radius": 4.0,
+    "reference_samples": 4096,
+    "depths": [
+      16,
+      20,
+      24
+    ],
+    "zeros": 12,
+    "tail_start": 7,
+    "direct_order": 12,
+    "skip_direct": false,
+    "pade_depths": [
+      12,
+      16
+    ],
+    "controls": "signal,signflip,permuted,gaussian",
+    "missing_penalty": 100.0,
+    "noise_levels": [
+      1e-18,
+      1e-14,
+      1e-10
+    ],
+    "noise_trials": 2,
+    "skip_perturbation": false,
+    "seed": 20260714,
+    "out_prefix": "rot_rh_primitive_resolvent_validation_stable"
+  },
+  "best_depth_result": {
+    "depth": 24,
+    "count": 12,
+    "coverage": 1.0,
+    "penalized_rmse": 0.009639825537665491,
+    "penalized_relative_rmse": 0.00017078605027612918,
+    "max_abs_error": 0.033382962988973475,
+    "tail_start": 7,
+    "tail_penalized_rmse": 0.013632772014277051,
+    "tail_penalized_relative_rmse": 0.00024152794856463516,
+    "orthogonality_defect": 3.965534120805702e-118,
+    "breakdown_index": -1,
+    "min_beta": 7.165694844298763e-05
+  },
+  "signal_control": {
+    "control": "signal",
+    "depth": 24,
+    "count": 12,
+    "coverage": 1.0,
+    "penalized_rmse": 0.009639825537665491,
+    "penalized_relative_rmse": 0.00017078605027612918,
+    "max_abs_error": 0.033382962988973475,
+    "breakdown_index": -1,
+    "orthogonality_defect": 3.965534120805702e-118,
+    "min_beta": 7.165694844298763e-05
+  },
+  "best_null_control": {
+    "control": "signflip",
+    "depth": 24,
+    "count": 1,
+    "coverage": 0.08333333333333333,
+    "penalized_rmse": 95.77796962486639,
+    "penalized_relative_rmse": 95.74288728711473,
+    "max_abs_error": 100.0,
+    "breakdown_index": 1,
+    "orthogonality_defect": 1.204959932551442e-181,
+    "min_beta": 0.001910897792088026
+  },
+  "best_null_to_signal_penalized_ratio": 560601.3320895726,
+  "max_prediction_delta_across_stability_grid": 1.2505552149377763e-12,
+  "max_direct_vs_cauchy_moment_relative_error": 1.0936476259990929e-88,
+  "carleman_partial_sum_last": 9284.75462392581,
+  "runtime_seconds": 312.8687090873718
+}

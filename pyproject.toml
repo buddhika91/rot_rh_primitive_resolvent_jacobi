@@ -1,0 +1,9 @@
+[project]
+name = "rot-rh-primitive-resolvent-jacobi"
+version = "0.1.0"
+description = "Finite Stieltjes-Jacobi reconstruction and GUE validation from the primitive Riemann Xi resolvent"
+requires-python = ">=3.10"
+dependencies = ["numpy>=2.0", "scipy>=1.13", "mpmath>=1.3", "pandas>=2.2"]
+
+[tool.ruff]
+line-length = 100
