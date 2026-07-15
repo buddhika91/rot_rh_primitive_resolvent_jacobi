@@ -1,0 +1,81 @@
+{
+  "nodes_file": "/mnt/data/frontier_smoke_nodes.csv",
+  "args": {
+    "nodes_file": "/mnt/data/frontier_smoke_nodes.csv",
+    "depths": [
+      36,
+      40
+    ],
+    "relative_tolerances": [
+      1e-06
+    ],
+    "absolute_tolerances": [
+      1e-06
+    ],
+    "trim_fractions": [
+      0.0,
+      0.1
+    ],
+    "unfold_methods": "rvm,polynomial,local",
+    "poly_degree": 5,
+    "minimum_spacings_list": [
+      8
+    ],
+    "bootstrap_trials": 10,
+    "seed": 20260714,
+    "out_prefix": "/mnt/data/frontier_smoke"
+  },
+  "best_raw": {
+    "depth": 36,
+    "relative_tolerance": 1e-06,
+    "absolute_tolerance": 1e-06,
+    "trim_fraction": 0.0,
+    "unfolding": "rvm",
+    "minimum_spacings_gate": 8,
+    "eligible": true,
+    "gue_wins": true,
+    "stable_start_index": 1,
+    "stable_end_index": 20,
+    "stable_count": 20,
+    "bulk_start_index": 1,
+    "bulk_end_index": 20,
+    "bulk_count": 20,
+    "spacing_count": 19,
+    "ks_gue": 0.23820967617728894,
+    "ks_goe": 0.271722132591918,
+    "ks_poisson": 0.43979243768214515,
+    "gue_margin_vs_goe": 0.03351245641462908,
+    "gue_margin_vs_poisson": 0.2015827615048562,
+    "mean_ratio": 0.9569538607629483,
+    "ratio_ks_gue": 0.8725922399888235,
+    "ratio_ks_goe": 0.8997658893558651,
+    "ratio_ks_poisson": 0.9420097436035028,
+    "zero_rmse": 9.99999998896328e-07,
+    "zero_relative_rmse": 3.1651815841597214e-08,
+    "zero_max_abs_error": 1.00000000458067e-06,
+    "max_relative_depth_drift": 2e-07,
+    "mean_relative_depth_drift": 1.5249999999999997e-07,
+    "bootstrap_trials": 10,
+    "gue_win_fraction": 1.0,
+    "median_ks_gue": 0.2567696015914407,
+    "median_ks_goe": 0.2896356968599596,
+    "median_ks_poisson": 0.45818690437633536
+  },
+  "best_robust": null,
+  "best_consensus": {
+    "depth": 36,
+    "relative_tolerance": 1e-06,
+    "absolute_tolerance": 1e-06,
+    "trim_fraction": 0.0,
+    "minimum_spacings_gate": 8,
+    "methods_present": 3,
+    "gue_winning_methods": 3,
+    "gue_consensus_fraction": 1.0,
+    "minimum_spacing_count": 19,
+    "mean_ks_gue": 0.43209366560890317,
+    "mean_ks_goe": 0.4511698945150709,
+    "mean_ks_poisson": 0.5669252526601649,
+    "mean_ratio": 0.9839691179573741,
+    "mean_bootstrap_gue_win_fraction": 1.0
+  }
+}

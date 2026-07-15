@@ -1,0 +1,56 @@
+{
+  "scientific_status": "preregistered finite deeper-depth GUE validation of the unchanged canonical resolvent Jacobi operator; not an RH proof",
+  "frozen_rule": {
+    "relative_tolerance": 0.01,
+    "absolute_tolerance": 0.01,
+    "trim_fraction": 0.0,
+    "unfolding_methods": [
+      "rvm",
+      "local"
+    ]
+  },
+  "primary_endpoint": {
+    "depth": 8,
+    "minimum_spacings": 2,
+    "minimum_winning_methods": 1,
+    "ratio_interval": [
+      0.55,
+      0.65
+    ],
+    "minimum_bootstrap_win": 0.0,
+    "maximum_zero_relative_rmse": 10.0
+  },
+  "deepest_evaluation_result": {
+    "depth": 8,
+    "status": "FAIL",
+    "methods": 2,
+    "gue_winning_methods": 0,
+    "ratio_passing_methods": 0,
+    "minimum_spacing_count": 1,
+    "minimum_bootstrap_gue_win_fraction": 0.0,
+    "maximum_zero_relative_rmse": 1.4965422147839037e-07,
+    "pass_spacings": false,
+    "pass_winning_methods": false,
+    "pass_ratio": false,
+    "pass_bootstrap": true,
+    "pass_zero_accuracy": true
+  },
+  "all_evaluation_results": [
+    {
+      "depth": 8,
+      "status": "FAIL",
+      "methods": 2,
+      "gue_winning_methods": 0,
+      "ratio_passing_methods": 0,
+      "minimum_spacing_count": 1,
+      "minimum_bootstrap_gue_win_fraction": 0.0,
+      "maximum_zero_relative_rmse": 1.4965422147839037e-07,
+      "pass_spacings": false,
+      "pass_winning_methods": false,
+      "pass_ratio": false,
+      "pass_bootstrap": true,
+      "pass_zero_accuracy": true
+    }
+  ],
+  "runtime_seconds": 0.2195432186126709
+}

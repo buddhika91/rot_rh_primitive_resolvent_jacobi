@@ -1,0 +1,60 @@
+{
+  "scientific_status": "finite numerical primitive-resolvent/Stieltjes audit only; not an RH proof",
+  "architecture": {
+    "primitive_object": "R(u)=-Phi'(u)/Phi(u)",
+    "generator_field": "positive Stieltjes moment sequence",
+    "jacobi_construction": "canonical Stieltjes orthogonalization",
+    "coefficient_optimization": false,
+    "predicted_variable": "gamma=1/sqrt(Jacobi eigenvalue)"
+  },
+  "args": {
+    "dps": 140,
+    "radius": 4.0,
+    "samples": 2048,
+    "depths": [
+      8,
+      12,
+      16,
+      20
+    ],
+    "zeros": 12,
+    "max_gate": 8,
+    "sfraction_depth": 20,
+    "tail_order": 80,
+    "entropy_eta": 0.05,
+    "entropy_power": 1.0,
+    "entropy_strength": 0.0,
+    "controls": "signal,signflip,permuted,gaussian,phase_scramble",
+    "seed": 20260714,
+    "out_prefix": "rot_rh_primitive_resolvent_generator"
+  },
+  "positivity": {
+    "moment_violations": 0,
+    "hankel_violations": 0,
+    "sfraction_failures": 0
+  },
+  "best_signal": {
+    "control": "signal",
+    "depth": 20,
+    "count": 12,
+    "rmse": 0.6210160066365364,
+    "relative_rmse": 0.011054098139060069,
+    "max_abs_error": 2.078994955666758,
+    "orthogonality_defect": 3.835229269763849e-93,
+    "breakdown_index": -1,
+    "min_beta": 9.701864358338737e-05
+  },
+  "best_null": {
+    "control": "signflip",
+    "depth": 8,
+    "count": 1,
+    "rmse": 9.001865670067648,
+    "relative_rmse": 0.6368617415480133,
+    "max_abs_error": 9.001865670067648,
+    "orthogonality_defect": 2.624170354518394e-141,
+    "breakdown_index": 1,
+    "min_beta": 0.001910897792088026
+  },
+  "best_null_to_signal_relative_rmse": 57.6131796132367,
+  "runtime_seconds": 100.47940802574158
+}

@@ -1,0 +1,11 @@
+{
+  "dps": 60,
+  "radius": 3.0,
+  "samples": 96,
+  "depths": [
+    4,
+    6,
+    8
+  ],
+  "algorithm": "quarter_contour_single_stieltjes_v2"
+}

@@ -1,0 +1,2 @@
+depth,status,methods,gue_winning_methods,ratio_passing_methods,minimum_spacing_count,minimum_bootstrap_gue_win_fraction,maximum_zero_relative_rmse,pass_spacings,pass_winning_methods,pass_ratio,pass_bootstrap,pass_zero_accuracy
+8,FAIL,2,0,0,1,0.0,1.4965422147839037e-07,False,False,False,True,True

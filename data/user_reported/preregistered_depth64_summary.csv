@@ -1,0 +1,4 @@
+depth,status,stable_spacings,gue_winning_methods,methods,ratio_passing_methods,bootstrap_min,zero_relative_rmse,failure_reason
+56,FAIL,24,3,3,3,0.996,7.668e-12,Below preregistered 28-spacing minimum
+60,FAIL,25,3,3,3,0.992,2.492e-13,Below preregistered 28-spacing minimum
+64,PASS,28,3,3,3,0.99,3.633e-12,

@@ -1,0 +1,39 @@
+{
+  "provenance": "Values transcribed from the user-reported terminal output of the preregistered depth-64 run. Raw output CSV/JSON files were not available in this packaging environment.",
+  "command": "python3 rot_rh_resolvent_preregistered_gue_validation_fast_v2.py --dps 400 --radius 4 --samples 8192 --calibration-depths 48,52 --evaluation-depths 56,60,64 ...",
+  "rows": [
+    {
+      "depth": 56,
+      "status": "FAIL",
+      "stable_spacings": 24,
+      "gue_winning_methods": 3,
+      "methods": 3,
+      "ratio_passing_methods": 3,
+      "bootstrap_min": 0.996,
+      "zero_relative_rmse": 7.668e-12,
+      "failure_reason": "Below preregistered 28-spacing minimum"
+    },
+    {
+      "depth": 60,
+      "status": "FAIL",
+      "stable_spacings": 25,
+      "gue_winning_methods": 3,
+      "methods": 3,
+      "ratio_passing_methods": 3,
+      "bootstrap_min": 0.992,
+      "zero_relative_rmse": 2.492e-13,
+      "failure_reason": "Below preregistered 28-spacing minimum"
+    },
+    {
+      "depth": 64,
+      "status": "PASS",
+      "stable_spacings": 28,
+      "gue_winning_methods": 3,
+      "methods": 3,
+      "ratio_passing_methods": 3,
+      "bootstrap_min": 0.99,
+      "zero_relative_rmse": 3.633e-12,
+      "failure_reason": ""
+    }
+  ]
+}
